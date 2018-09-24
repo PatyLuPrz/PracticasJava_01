@@ -20,6 +20,8 @@ public class ControllerNB implements ActionListener{
         this.viewNB = viewNB;
         viewNB.JMI_Read.addActionListener(this);
         viewNB.JMI_Write.addActionListener(this);
+        viewNB.JMI_Encrypt.addActionListener(this);
+        viewNB.JMI_Decrypt.addActionListener(this);
         initView();
     }
     
@@ -38,6 +40,19 @@ public class ControllerNB implements ActionListener{
             modelNB.setPath(""+file.getSelectedFile());
             modelNB.setMessage(viewNB.JTA_Txt.getText());
             modelNB.writeFile(modelNB.getPath(), modelNB.getMessage());
+        }else if(e.getSource()==viewNB.JMI_Encrypt){
+            JFileChooser file=new JFileChooser();
+            file.addChoosableFileFilter(filtro);
+            file.showSaveDialog(null);
+            modelNB.setPath(""+file.getSelectedFile());
+            modelNB.setMessage(viewNB.JTA_Txt.getText());
+            modelNB.writeFileEncrypted(modelNB.getPath(), modelNB.getMessage());
+        }else if(e.getSource()==viewNB.JMI_Decrypt){
+            JFileChooser file=new JFileChooser();
+            file.addChoosableFileFilter(filtro);
+            file.showOpenDialog(null);
+            modelNB.readFileDecrypted(modelNB.getPath());      
+            viewNB.JTA_Txt.setText(modelNB.getMessage());
         }
     }
     private void initView() {

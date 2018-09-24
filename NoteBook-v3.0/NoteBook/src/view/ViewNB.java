@@ -31,9 +31,11 @@ public class ViewNB extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTA_Txt = new javax.swing.JTextArea();
         JMenu = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        JM_File = new javax.swing.JMenu();
         JMI_Write = new javax.swing.JMenuItem();
         JMI_Read = new javax.swing.JMenuItem();
+        JMI_Encrypt = new javax.swing.JMenuItem();
+        JMI_Decrypt = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -43,15 +45,21 @@ public class ViewNB extends javax.swing.JFrame {
         JTA_Txt.setRows(5);
         jScrollPane1.setViewportView(JTA_Txt);
 
-        jMenu2.setText("Archivo");
+        JM_File.setText("Archivo");
 
-        JMI_Write.setText("Escribir");
-        jMenu2.add(JMI_Write);
+        JMI_Write.setText("Guardar");
+        JM_File.add(JMI_Write);
 
-        JMI_Read.setText("Leer");
-        jMenu2.add(JMI_Read);
+        JMI_Read.setText("Abrir");
+        JM_File.add(JMI_Read);
 
-        JMenu.add(jMenu2);
+        JMI_Encrypt.setText("Cifrar");
+        JM_File.add(JMI_Encrypt);
+
+        JMI_Decrypt.setText("Descrifrar");
+        JM_File.add(JMI_Decrypt);
+
+        JMenu.add(JM_File);
 
         setJMenuBar(JMenu);
 
@@ -112,12 +120,14 @@ public class ViewNB extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JMenuItem JMI_Decrypt;
+    public javax.swing.JMenuItem JMI_Encrypt;
     public javax.swing.JMenuItem JMI_Read;
     public javax.swing.JMenuItem JMI_Write;
+    public javax.swing.JMenu JM_File;
     public javax.swing.JMenuBar JMenu;
     public javax.swing.JTextArea JTA_Txt;
     private javax.swing.JMenu jMenu1;
-    public javax.swing.JMenu jMenu2;
     public javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
