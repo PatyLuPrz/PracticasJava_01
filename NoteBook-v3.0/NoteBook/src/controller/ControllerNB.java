@@ -1,8 +1,8 @@
 package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.*;
 import model.ModelNB;
 import view.ViewNB;
 /**
@@ -13,6 +13,7 @@ public class ControllerNB implements ActionListener{
     
     private final ModelNB modelNB;
     private final ViewNB viewNB;
+    FileFilter filtro = new FileNameExtensionFilter("Archivos adty","adty");
     
     public ControllerNB(ModelNB modelNB, ViewNB viewNB){
         this.modelNB = modelNB;
@@ -25,11 +26,16 @@ public class ControllerNB implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==viewNB.JMI_Read){
-            seleccionarRuta();
+            JFileChooser file=new JFileChooser();
+            file.addChoosableFileFilter(filtro);
+            file.showOpenDialog(null);
             modelNB.readFile(modelNB.getPath());      
             viewNB.JTA_Txt.setText(modelNB.getMessage());
         }else if(e.getSource()==viewNB.JMI_Write){
-            seleccionarRuta();
+            JFileChooser file=new JFileChooser();
+            file.addChoosableFileFilter(filtro);
+            file.showSaveDialog(null);
+            modelNB.setPath(""+file.getSelectedFile());
             modelNB.setMessage(viewNB.JTA_Txt.getText());
             modelNB.writeFile(modelNB.getPath(), modelNB.getMessage());
         }
@@ -39,12 +45,5 @@ public class ControllerNB implements ActionListener{
         viewNB.setResizable(false);
         viewNB.setLocationRelativeTo(null);
         viewNB.setVisible(true);
-    }   
-
-    private void seleccionarRuta() {
-        JFileChooser file=new JFileChooser();
-        file.showSaveDialog(null);
-        modelNB.setPath(""+file.getSelectedFile());
     }
-
 }
