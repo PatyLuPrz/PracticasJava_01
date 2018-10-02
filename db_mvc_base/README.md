@@ -1,5 +1,4 @@
-"DB_MVC base" 
-Actividad 12:
+### Actividad 12:
 Crear una aplicación en java utilizando el patrón de diseño MVC que realice las siguientes acciones:
 
 0.  Clonar el proyecto db_mvc_base que esta dentro del material de apoyo.
